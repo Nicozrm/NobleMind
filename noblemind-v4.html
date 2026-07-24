@@ -12,8 +12,8 @@
 <style>
 /* ═══════════ Basis ═══════════ */
 :root{
-  --bg:#0B0B0C; --surface:#131315; --raised:#1B1B1E; --border:#26262A;
-  --text:#F2F1EE; --muted:#A3A29D; --faint:#6C6B67; --accent:#C9A962;
+  --bg:#000000; --surface:#0A0A0B; --raised:#121214; --border:#1A1A1D;
+  --text:#EDECE8; --muted:#98978F; --faint:#5F5E59; --accent:#C9A962;
   --blur:28px; --r:12px; --rg:18px;
   --ease:cubic-bezier(.2,.7,.2,1);
 }
@@ -74,9 +74,10 @@ body.sb-zu #sb{margin-left:-260px}
 .sb-marke{display:flex;align-items:center;gap:8px;padding:18px 16px 10px;font-weight:600;letter-spacing:.4px}
 .sb-marke b{font-weight:700}
 .sb-punkt{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none}
-.sb-tabs{display:flex;gap:2px;margin:6px 10px;padding:3px;background:var(--surface);border-radius:10px}
-.sb-tabs button{flex:1;padding:5px 0;border-radius:8px;font-size:12.5px;color:var(--muted)}
-.sb-tabs button.aktiv{background:var(--raised);color:var(--text)}
+.sb-tabs{display:flex;gap:16px;margin:8px 16px 4px}
+.sb-tabs button{padding:4px 0;font-size:12px;color:var(--faint);border-bottom:1px solid transparent;letter-spacing:.2px;border-radius:0}
+.sb-tabs button.aktiv{color:var(--text);border-bottom-color:var(--accent)}
+.sb-tabs button:hover{color:var(--muted)}
 #sbListe{flex:1;overflow-y:auto;padding:6px 10px}
 .eintrag{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;cursor:pointer;color:var(--muted);position:relative}
 .eintrag:hover{background:var(--raised);color:var(--text)}
@@ -86,8 +87,8 @@ body.sb-zu #sb{margin-left:-260px}
 .eintrag .mehr{flex:none;opacity:0;font-size:15px;padding:0 3px;border-radius:6px;color:var(--faint)}
 .eintrag:hover .mehr{opacity:1}
 .eintrag .mehr:hover{color:var(--text)}
-.sb-neu{margin:6px 10px;padding:8px;border:1px dashed var(--border);border-radius:10px;color:var(--muted);font-size:13px;text-align:center}
-.sb-neu:hover{color:var(--text);border-color:var(--faint)}
+.sb-neu{margin:6px 10px;padding:8px 14px;border:0;border-radius:10px;color:var(--faint);font-size:13px;text-align:left}
+.sb-neu:hover{color:var(--text);background:var(--raised)}
 #hud{border-top:1px solid var(--border);padding:12px 16px;font-size:11.5px;color:var(--faint)}
 #hud .balken{height:3px;background:var(--surface);border-radius:99px;margin:6px 0;overflow:hidden}
 #hud .balken i{display:block;height:100%;background:var(--accent);width:0;border-radius:99px;transition:width .3s var(--ease)}
@@ -118,7 +119,7 @@ body.zen #sb,body.zen #hd .zenweg{display:none}
 .msg{margin:26px 0;animation:auftauchen .18s var(--ease)}
 @keyframes auftauchen{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .msg.u{display:flex;flex-direction:column;align-items:flex-end}
-.msg.u .blase{background:var(--raised);border-radius:16px 16px 4px 16px;padding:10px 15px;max-width:85%;white-space:pre-wrap;overflow-wrap:anywhere}
+.msg.u .blase{background:var(--raised);border-radius:20px 20px 6px 20px;padding:10px 16px;max-width:85%;white-space:pre-wrap;overflow-wrap:anywhere}
 .msg .fuss{display:flex;gap:2px;align-items:center;margin-top:6px;opacity:0;transition:opacity .15s;flex-wrap:wrap}
 .msg:hover .fuss,.msg:focus-within .fuss{opacity:1}
 .msg .fuss button{font-size:11px;color:var(--faint);padding:3px 7px;border-radius:7px}
@@ -147,11 +148,11 @@ body.zen #sb,body.zen #hd .zenweg{display:none}
 .md pre code{background:none;padding:0;font-size:13px;line-height:1.55}
 .md img{max-width:100%;border-radius:var(--r)}
 .cb{margin:14px 0;border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
-.cb-kopf{display:flex;align-items:center;gap:8px;padding:5px 12px;background:#161619;border-bottom:1px solid var(--border);font-size:11px;color:var(--muted);font-family:"JetBrains Mono",monospace}
+.cb-kopf{display:flex;align-items:center;gap:8px;padding:5px 12px;background:#0D0D0F;border-bottom:1px solid var(--border);font-size:11px;color:var(--muted);font-family:"JetBrains Mono",monospace}
 .cb-kopf .sp{flex:1}
 .cb-kopf button{font-size:11px;color:var(--faint);padding:2px 7px;border-radius:6px}
 .cb-kopf button:hover{color:var(--text);background:var(--raised)}
-.cb pre{padding:13px 14px;overflow-x:auto;background:#111114}
+.cb pre{padding:13px 14px;overflow-x:auto;background:#08080A}
 .lauf-rahmen{width:100%;height:240px;border:0;border-top:1px solid var(--border);background:#fff}
 .bildreihe img{max-width:100%;border-radius:var(--r);margin:8px 0;display:block}
 
@@ -199,7 +200,7 @@ body.zen #sb,body.zen #hd .zenweg{display:none}
 
 /* Composer */
 #compHalter{position:absolute;bottom:0;left:0;right:0;z-index:21;padding:0 16px calc(14px + env(safe-area-inset-bottom));pointer-events:none}
-#comp{max-width:760px;margin:0 auto;border-radius:var(--rg);padding:10px 12px;pointer-events:auto}
+#comp{max-width:760px;margin:0 auto;border-radius:26px;padding:10px 12px;pointer-events:auto}
 #anhaengeZeile{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
 #anhaengeZeile:empty{display:none}
 .anhPille{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;background:var(--raised);border:1px solid var(--border);border-radius:999px;padding:3px 6px 3px 11px;color:var(--muted)}
@@ -209,7 +210,7 @@ body.zen #sb,body.zen #hd .zenweg{display:none}
 #eingabe{flex:1;background:none;border:0;color:var(--text);font:inherit;resize:none;max-height:200px;padding:6px 4px;line-height:1.5}
 #eingabe:focus{outline:none}
 #eingabe::placeholder{color:var(--faint)}
-#senden{width:36px;height:36px;flex:none;border-radius:11px;background:var(--accent);color:#0B0B0C;font-size:15px;display:inline-flex;align-items:center;justify-content:center;transition:transform .15s var(--ease),opacity .15s}
+#senden{width:36px;height:36px;flex:none;border-radius:999px;background:var(--accent);color:#0B0B0C;font-size:15px;display:inline-flex;align-items:center;justify-content:center;transition:transform .15s var(--ease),opacity .15s}
 #senden:hover{transform:translateY(-1px)}
 #senden:disabled{opacity:.35;transform:none;cursor:default}
 #senden.stopp{background:var(--raised);color:var(--text);border:1px solid var(--border)}
@@ -217,21 +218,21 @@ body.zen #sb,body.zen #hd .zenweg{display:none}
 
 /* Leerzustand */
 #leer{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;text-align:center;gap:10px}
-#leer h1{font-size:26px;font-weight:700;letter-spacing:.5px}
+#leer h1{font-size:30px;font-weight:700;letter-spacing:1px}
 #leer h1 i{color:var(--accent);font-style:normal}
 #leer p{color:var(--muted);font-size:14px;max-width:420px}
 #leer .beispiele{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:14px}
-#leer .beispiele button{font-size:12.5px;color:var(--muted);border:1px solid var(--border);border-radius:999px;padding:7px 15px}
-#leer .beispiele button:hover{color:var(--text);border-color:var(--faint)}
+#leer .beispiele button{font-size:12.5px;color:var(--muted);background:var(--raised);border-radius:999px;padding:7px 15px}
+#leer .beispiele button:hover{color:var(--text)}
 
 /* Knöpfe · Formulare */
-.kn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border:1px solid var(--border);border-radius:10px;font-size:13px;color:var(--text);transition:background .15s}
-.kn:hover{background:var(--raised)}
+.kn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border:1px solid transparent;background:var(--raised);border-radius:10px;font-size:13px;color:var(--text);transition:border-color .15s,background .15s}
+.kn:hover{border-color:var(--border)}
 .kn.primaer{background:var(--accent);border-color:var(--accent);color:#0B0B0C;font-weight:600}
 .kn.primaer:hover{background:color-mix(in srgb,var(--accent) 88%,#fff)}
 .kn.gefahr{color:#E58C96}
 .kn.klein{padding:4px 10px;font-size:12px}
-.ein{width:100%;background:var(--raised);border:1px solid var(--border);border-radius:10px;padding:8px 11px;color:var(--text);font:inherit;font-size:13.5px}
+.ein{width:100%;background:var(--raised);border:1px solid transparent;border-radius:10px;padding:8px 11px;color:var(--text);font:inherit;font-size:13.5px}
 .ein:focus{outline:none;border-color:var(--accent)}
 textarea.ein{resize:vertical;min-height:60px;line-height:1.5}
 select.ein{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--faint) 50%),linear-gradient(135deg,var(--faint) 50%,transparent 50%);background-position:calc(100% - 16px) 50%,calc(100% - 11px) 50%;background-size:5px 5px;background-repeat:no-repeat;padding-right:30px}
@@ -356,10 +357,21 @@ select.ein{appearance:none;-webkit-appearance:none;background-image:linear-gradi
 .tastTab td{padding:6px 4px;border-bottom:1px solid color-mix(in srgb,var(--border) 55%,transparent)}
 .tastTab kbd{background:var(--raised);border:1px solid var(--border);border-radius:6px;padding:2px 7px;font-size:11.5px}
 
+/* Canvas */
+#canvas{position:fixed;top:0;right:0;bottom:0;width:min(560px,100vw);z-index:60;display:flex;flex-direction:column;border-left:1px solid color-mix(in srgb,#fff 7%,transparent);transform:translateX(102%);transition:transform .22s var(--ease)}
+body.canvas-auf #canvas{transform:none}
+#canvas .ck{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid color-mix(in srgb,#fff 6%,transparent)}
+#canvas .ck .ct{flex:1;font-size:12.5px;color:var(--muted);font-family:"JetBrains Mono",monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#canvasCode{flex:1;background:#050506;border:0;color:var(--text);font:12.5px/1.55 "JetBrains Mono",monospace;padding:14px;resize:none;min-height:120px}
+#canvasCode:focus{outline:none}
+#canvasVorschau{flex:1.2;border:0;border-top:1px solid color-mix(in srgb,#fff 6%,transparent);background:#fff;display:none}
+body.canvas-live #canvasVorschau{display:block}
+.bildreihe figure a{display:inline-block;margin-top:2px}
+
 /* Druck */
 @media print{
   body{overflow:visible;background:#fff;color:#000}
-  #sb,#hd,#compHalter,#toasts,#schleier,.fuss,.chips,#hud{display:none!important}
+  #sb,#hd,#compHalter,#toasts,#schleier,#canvas,.fuss,.chips,#hud{display:none!important}
   #app,#main{display:block;height:auto}
   #chat{overflow:visible;padding:0;height:auto}
   .msg.u .blase{background:#f0f0f0;color:#000}
@@ -391,17 +403,16 @@ select.ein{appearance:none;-webkit-appearance:none;background-image:linear-gradi
       <button class="ikn" aria-label="Seitenleiste umschalten" onclick="sidebarUm()">☰</button>
       <button id="kopfModell" onclick="modellPopover(this)" aria-label="Modell oder Agent wählen"></button>
       <div id="kopfTitel" class="zenweg" onclick="titelUmbenennen()" title="Titel ändern"></div>
-      <button class="ikn zenweg" aria-label="Befehlspalette öffnen" onclick="paletteUm()">⌘</button>
       <button class="ikn" aria-label="Einstellungen öffnen" onclick="einstellungenAuf('engine')">⚙</button>
     </header>
     <div id="chat">
       <div id="spalte"></div>
       <div id="leer">
         <h1><i>NOBLE</i>mind</h1>
-        <p id="leerText">Der KI-Arbeitsplatz der NobleFrame UG. Modelle, Agenten und Workflows – alles in einer Oberfläche.</p>
+        <p id="leerText">Modelle · Agenten · Workflows · Connectoren · Studio</p>
         <div class="beispiele">
-          <button onclick="beispiel('Erkläre mir den Unterschied zwischen REST und GraphQL – kurz und präzise.')">REST vs. GraphQL</button>
-          <button onclick="beispiel('Wie ist das Wetter in Berlin?')">Wetter in Berlin</button>
+          <button onclick="beispiel('/bild Minimalistisches goldenes Emblem auf tiefschwarzem Grund, Studiolicht')">Bild erzeugen</button>
+          <button onclick="beispiel('Baue mir eine kleine HTML-Seite mit animiertem Farbverlauf.')">Code für Canvas</button>
           <button onclick="beispiel('/workflow Recherche → Analyse → Text')">Workflow starten</button>
         </div>
       </div>
@@ -410,17 +421,25 @@ select.ein{appearance:none;-webkit-appearance:none;background-image:linear-gradi
       <div id="comp" class="glass">
         <div id="anhaengeZeile"></div>
         <div id="compZeile">
-          <button class="ikn" aria-label="Datei anhängen" onclick="dateiEingabeKlick()">+</button>
-          <button class="ikn" aria-label="Werkzeuge" onclick="werkzeugPopover(this)">⚒</button>
-          <textarea id="eingabe" rows="1" placeholder="Nachricht an NOBLEmind …" aria-label="Nachricht eingeben"></textarea>
+          <button class="ikn" aria-label="Menü: Anhänge, Werkzeuge, Bild-Studio, Canvas" onclick="plusMenue(this)">+</button>
+          <textarea id="eingabe" rows="1" placeholder="Nachricht …" aria-label="Nachricht eingeben"></textarea>
           <button class="ikn" id="mikro" aria-label="Diktat" onclick="diktatUm()">🎙</button>
-          <button class="ikn zenweg" aria-label="Sprachdialog" onclick="sprachOverlayAuf()">◉</button>
           <button id="senden" aria-label="Senden" onclick="sendenKlick()">↑</button>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<aside id="canvas" class="glass" aria-label="Canvas">
+  <div class="ck"><span class="ct" id="canvasTitel">canvas</span>
+    <button class="kn klein" type="button" onclick="canvasLauf()">Ausführen</button>
+    <button class="kn klein" type="button" onclick="kopiere($('#canvasCode').value)">Kopieren</button>
+    <button class="kn klein" type="button" onclick="canvasDownload()">Download</button>
+    <button class="ikn" aria-label="Canvas schließen" onclick="canvasZu()">✕</button></div>
+  <textarea id="canvasCode" spellcheck="false" aria-label="Canvas-Code" placeholder="HTML, SVG oder JavaScript – „Ausführen“ rendert live."></textarea>
+  <iframe id="canvasVorschau" sandbox="allow-scripts" title="Canvas-Vorschau"></iframe>
+</aside>
 
 <div id="toasts" aria-live="polite"></div>
 
@@ -522,7 +541,7 @@ function persistierbar(){
     schluessel:S.merkeSchluessel?S.schluessel:'', merkeSchluessel:S.merkeSchluessel,
     cfg:S.cfg, eigeneModelle:S.eigeneModelle, agents:S.agents, workflows:S.workflows,
     skills:S.skills, fnsEigene:S.fnsEigene, mcpServer:S.mcpServer, prompts:S.prompts,
-    notizen:S.notizen, sessions:S.sessions, aktiv:S.aktiv, duell:S.duell, stats:S.stats, ui:S.ui
+    notizen:S.notizen, sessions:S.sessions, aktiv:S.aktiv, duell:S.duell, bild:S.bild, stats:S.stats, ui:S.ui
   }));
   return kopie;
 }
@@ -555,6 +574,20 @@ const MODELLE=[
 const STANDARD_PREIS={ctx:128000,ein:2.5,aus:10,geschaetzt:true};
 const AKZENTE={gold:'#C9A962',platin:'#C8CCD2',smaragd:'#5FBD92',amethyst:'#A98CDA',rubin:'#D9707A'};
 const STIMMEN=['alloy','ash','ballad','coral','echo','fable','nova','onyx','sage','shimmer','verse'];
+/* Connector-Galerie: bekannte Remote-MCP-Endpunkte, nur Zugangsdaten ergänzen */
+const CONNECTOREN=[
+  {label:'github',url:'https://api.githubcopilot.com/mcp/',auth:'Bearer <GitHub-PAT>'},
+  {label:'notion',url:'https://mcp.notion.com/mcp',auth:'Bearer <Token>'},
+  {label:'linear',url:'https://mcp.linear.app/mcp',auth:'Bearer <Token>'},
+  {label:'sentry',url:'https://mcp.sentry.dev/mcp',auth:'Bearer <Token>'},
+  {label:'stripe',url:'https://mcp.stripe.com',auth:'Bearer <Restricted-Key>'},
+  {label:'paypal',url:'https://mcp.paypal.com/mcp',auth:'Bearer <Token>'},
+  {label:'zapier',url:'https://mcp.zapier.com/api/mcp/mcp',auth:'Bearer <Token>'},
+  {label:'hubspot',url:'https://mcp.hubspot.com/anthropic',auth:'Bearer <Token>'},
+  {label:'deepwiki',url:'https://mcp.deepwiki.com/mcp',auth:''},
+  {label:'context7',url:'https://mcp.context7.com/mcp',auth:''},
+  {label:'cloudflare-docs',url:'https://docs.mcp.cloudflare.com/mcp',auth:''},
+];
 
 function vorlageSkills(){return [
   {id:'sk_recherche',name:'Recherche',direktive:'Arbeite strikt quellenbasiert. Nutze die Websuche aktiv, prüfe Angaben gegen mindestens zwei unabhängige Quellen und kennzeichne Unsicherheiten ausdrücklich. Nenne Zahlen mit Datum und Quelle, trenne Fakten klar von Einschätzungen.',tools:{web:true},fns:[]},
@@ -571,6 +604,8 @@ function vorlageAgenten(){return [
   {id:'ag_advokat',name:'Advokat (DE)',avatar:'§',model:'gpt-5.6',instructions:'Du bist juristischer Assistent für deutsches Recht. Du nennst Normen, ordnest Sachverhalte ein und weist immer darauf hin, dass deine Auskunft keine Rechtsberatung ersetzt.',reasoning:'high',verbosity:'medium',temperature:1,maxTokens:null,tools:{web:true,img:false,code:false,file:false},fns:[],mcps:[],skills:['sk_recht'],outputFormat:'text',handoffTo:[]},
   {id:'ag_analyst',name:'Analyst',avatar:'∑',model:'gpt-5.6',instructions:'Du bist Datenanalyst. Du rechnest nach, statt zu schätzen, machst Annahmen explizit und lieferst Ergebnisse mit Zahlen, Tabellen und knapper Einordnung.',reasoning:'medium',verbosity:'aus',temperature:1,maxTokens:null,tools:{web:false,img:false,code:true,file:false},fns:['rechner','einheiten','zufall'],mcps:[],skills:['sk_daten'],outputFormat:'markdown',handoffTo:[]},
   {id:'ag_redakteur',name:'Redakteur',avatar:'✎',model:'gpt-5.6',instructions:'Du bist Redakteur. Du schreibst klar, aktiv und ohne Füllwörter, strukturierst Texte mit tragenden Überschriften und passt Tonalität und Länge dem Zweck an.',reasoning:'aus',verbosity:'aus',temperature:1.1,maxTokens:null,tools:{web:false,img:false,code:false,file:false},fns:[],mcps:[],skills:['sk_copy'],outputFormat:'markdown',handoffTo:[]},
+  {id:'ag_coder',name:'Coder',avatar:'⌨',model:'gpt-5.6',instructions:'Du bist Senior-Entwickler. Du lieferst lauffähigen, vollständigen Code ohne Platzhalter, erklärst Entscheidungen knapp und verifizierst Berechnungen mit dem Code-Interpreter. HTML-, SVG- und JS-Antworten sollen direkt in der Canvas-Vorschau laufen.',reasoning:'high',verbosity:'aus',temperature:1,maxTokens:null,tools:{web:false,img:false,code:true,file:false},fns:['rechner'],mcps:[],skills:['sk_codereview'],outputFormat:'markdown',handoffTo:[]},
+  {id:'ag_pixel',name:'Pixel',avatar:'▣',model:'gpt-5.6',instructions:'Du bist Bildgestalter. Du übersetzt Wünsche in präzise Bild-Prompts (Motiv, Stil, Licht, Komposition, Farbwelt) und erzeugst das Bild direkt über die Bildgenerierung. Frage nur nach, wenn das Motiv wirklich unklar ist.',reasoning:'aus',verbosity:'low',temperature:1,maxTokens:null,tools:{web:false,img:true,code:false,file:false},fns:[],mcps:[],skills:[],outputFormat:'text',handoffTo:[]},
 ];}
 function vorlageWorkflows(){return [
   {id:'wf_rat',name:'Recherche → Analyse → Text',description:'Dreistufige Kette: Fakten sammeln, kritisch analysieren, Endtext verfassen.',input:{label:'Thema',placeholder:'z. B. Zukunft der Wärmepumpe in Deutschland'},steps:[
@@ -600,6 +635,7 @@ let S={
   fnsEigene:[], mcpServer:[], prompts:[], notizen:[],
   sessions:[], aktiv:null,
   duell:{an:false,a:{art:'modell',id:'gpt-5.6'},b:{art:'modell',id:'gpt-5.2'}},
+  bild:{size:'auto',quality:'auto',format:'png'},
   stats:{}, ui:{akzent:'gold',glas:28,zen:false,vorlesen:false,stimme:'alloy',sprachmodus:'auto'},
 };
 // Laufzeitzustand – wird nie persistiert
@@ -612,6 +648,7 @@ function lese(){
   try{
     const d=JSON.parse(roh);
     S={...S,...d};
+    S.bild={size:'auto',quality:'auto',format:'png',...(d.bild||{})};
     S.cfg={...{model:'gpt-5.6',instructions:'',reasoning:'aus',verbosity:'aus',temperature:1,maxTokens:null,json:false,denkenZeigen:true,tools:{},fns:[],mcps:[],skills:[],vectorStores:[]},...d.cfg};
     if(!S.agents.length)S.agents=vorlageAgenten();
     if(!S.workflows.length)S.workflows=vorlageWorkflows();
@@ -957,6 +994,89 @@ function maximumAn(){
   toast('Maximum aktiv: '+aktiv.join(', ').replace(/&#8239;/g,'\u202F')+'.'+uebersprungen,'ok',6500);
 }
 
+/* Plus-Men\u00FC im Composer: b\u00FCndelt Anh\u00E4nge, Werkzeuge, Studio, Canvas, Sprache */
+function plusMenue(anker){
+  zeigePop(anker,`
+    <button class="pe" onclick="schliessePop();dateiEingabeKlick()"><span class="av">\u2301</span><span class="pb">Datei anh\u00E4ngen</span></button>
+    <button class="pe" onclick="schliessePop();werkzeugPopover(document.getElementById('eingabe'))"><span class="av">\u2692</span><span class="pb">Werkzeuge &amp; Skills</span></button>
+    <button class="pe" onclick="schliessePop();bildStudio()"><span class="av">\u25A3</span><span class="pb">Bild-Studio</span></button>
+    <button class="pe" onclick="schliessePop();canvasOeffne('','html')"><span class="av">\u2328</span><span class="pb">Canvas (Code)</span></button>
+    <div class="trenn"></div>
+    <button class="pe" onclick="schliessePop();sprachOverlayAuf()"><span class="av">\u25C9</span><span class="pb">Sprachdialog</span></button>
+    <button class="pe" onclick="schliessePop();paletteAuf()"><span class="av">\u2318</span><span class="pb">Befehlspalette</span></button>`,250);
+}
+
+/* Bild-Studio: Prompt plus Gr\u00F6\u00DFe/Qualit\u00E4t/Format, erzwungene Bildgenerierung */
+async function bildStudio(vorgabe){
+  const w=await frageForm({titel:'Bild-Studio',gross:true,felder:[
+    {k:'prompt',label:'Bildbeschreibung',typ:'textarea',zeilen:4,wert:vorgabe||'',platz:'z. B. Minimalistisches goldenes Emblem auf tiefschwarzem Grund, Studiolicht'},
+    {k:'size',label:'Gr\u00F6\u00DFe',typ:'select',wert:S.bild.size,optionen:[{v:'auto',t:'Automatisch'},{v:'1024x1024',t:'1024 \u00D7 1024'},{v:'1536x1024',t:'1536 \u00D7 1024 (quer)'},{v:'1024x1536',t:'1024 \u00D7 1536 (hoch)'}]},
+    {k:'quality',label:'Qualit\u00E4t',typ:'select',wert:S.bild.quality,optionen:[{v:'auto',t:'Automatisch'},{v:'low',t:'niedrig'},{v:'medium',t:'mittel'},{v:'high',t:'hoch'}]},
+    {k:'format',label:'Format',typ:'select',wert:S.bild.format,optionen:[{v:'png',t:'PNG'},{v:'jpeg',t:'JPEG'},{v:'webp',t:'WebP'}]},
+  ],ok:'Erzeugen',pruefe:x=>!x.prompt.trim()?'Bitte eine Bildbeschreibung angeben.':null});
+  if(!w)return;
+  S.bild={size:w.size,quality:w.quality,format:w.format};
+  speichern();
+  bildErzeuge(w.prompt.trim());
+}
+async function bildErzeuge(prompt){
+  if(R.streaming){toast('Es l\u00E4uft bereits eine Antwort \u2013 erst stoppen.','hinweis');return}
+  if(!S.schluessel){toast('Bitte zuerst den API-Schl\u00FCssel hinterlegen.','fehler');einstellungenAuf('engine');return}
+  const sess=aktSession(true);
+  sess.messages.push({id:uid('m'),role:'user',content:'Bild: '+prompt,ts:Date.now()});
+  const cfg=effCfg(sess.agentId);
+  const m={id:uid('m'),role:'assistant',content:'',think:'',chips:[],quellen:[],bilder:[],modell:cfg.model,ts:Date.now()};
+  sess.messages.push(m);
+  zeigeChat();speichern();
+  R.ctrl=new AbortController();R.streaming=m.id;setzeStopp(true);
+  try{
+    const lauf={calls:[],id:null,usage:null,bildIdx:{}};
+    await heileUndSende(()=>({model:cfg.model,stream:true,store:true,
+      input:[{role:'user',content:[{type:'input_text',text:'Erzeuge genau dieses Bild: '+prompt}]}],
+      tools:[bildToolDef()],tool_choice:'required'}),
+      ev=>{wendeEvent(ev,m,lauf);malPlan(m)},R.ctrl.signal);
+    if(lauf.usage){
+      m.usage={ein:lauf.usage.input_tokens||0,aus:lauf.usage.output_tokens||0};
+      verbucheNutzung(cfg.model,m.usage.ein,m.usage.aus);
+      sess.kosten=(sess.kosten||0)+kosten(cfg.model,m.usage.ein,m.usage.aus);
+    }
+    sess.lastId=null;
+  }catch(e){
+    if(e&&e.name==='AbortError')m.hinweis='Abgebrochen.';
+    else m.fehler=fehlerText(e);
+  }
+  R.streaming=null;R.ctrl=null;setzeStopp(false);
+  fertigMsg(m);speichern();titelAuto(sess);
+}
+
+/* Canvas: Code bearbeiten, live rendern, herunterladen */
+function canvasOeffne(code,lang){
+  R.canvasLang=(lang==='javascript'?'js':lang)||'html';
+  $('#canvasTitel').textContent='canvas \u00B7 '+R.canvasLang;
+  $('#canvasCode').value=code||'';
+  document.body.classList.add('canvas-auf');
+  document.body.classList.remove('canvas-live');
+  if(code)canvasLauf();
+  $('#canvasCode').focus();
+}
+function canvasZu(){
+  document.body.classList.remove('canvas-auf','canvas-live');
+  $('#canvasVorschau').srcdoc='';
+}
+function canvasLauf(){
+  const code=$('#canvasCode').value;
+  const sicher=code.replace(new RegExp('</scr'+'ipt','gi'),'<\\/scr'+'ipt');
+  const v=$('#canvasVorschau');
+  if(R.canvasLang==='js'){
+    v.srcdoc='<body style="margin:10px;font:13px monospace;background:#0a0a0b;color:#e8e8e8"><pre id="a"></pre><scr'+'ipt>const a=document.getElementById("a");const p=(...x)=>a.textContent+=x.map(v=>typeof v==="object"?JSON.stringify(v):String(v)).join(" ")+"\\n";console.log=p;console.error=p;console.warn=p;window.onerror=(m)=>p("Fehler:",m);try{'+sicher+'\n}catch(e){p("Fehler:",e.message)}</scr'+'ipt></body>';
+  }else v.srcdoc=sicher;
+  document.body.classList.add('canvas-live');
+}
+function canvasDownload(){
+  const endung=R.canvasLang==='svg'?'svg':R.canvasLang==='js'?'js':'html';
+  ladeHerunter('canvas.'+endung,$('#canvasCode').value,'text/plain;charset=utf-8');
+}
+
 /* ── Markdown-Pipeline ── */
 function md(t){
   if(!t)return '';
@@ -982,9 +1102,10 @@ function veredle(wurzel){
     const kopf=document.createElement('div');kopf.className='cb-kopf';
     const ausfuehrbar=['html','svg','js','javascript'].includes(lang);
     kopf.innerHTML=`<span>${esc(lang||'text')}</span><span class="sp"></span>
-      <button type="button" data-t="kopieren">Kopieren</button>${ausfuehrbar?'<button type="button" data-t="lauf">Ausführen</button>':''}`;
+      <button type="button" data-t="kopieren">Kopieren</button><button type="button" data-t="canvas">Canvas</button>${ausfuehrbar?'<button type="button" data-t="lauf">Ausführen</button>':''}`;
     pre.replaceWith(hu);hu.appendChild(kopf);hu.appendChild(pre);
     kopf.querySelector('[data-t=kopieren]').onclick=()=>kopiere(code?code.textContent:pre.textContent);
+    kopf.querySelector('[data-t=canvas]').onclick=()=>canvasOeffne(code?code.textContent:pre.textContent,lang||'html');
     const laufKn=kopf.querySelector('[data-t=lauf]');
     if(laufKn)laufKn.onclick=()=>fuehreCodeAus(code.textContent,lang,hu);
     if(window.hljs&&code){try{hljs.highlightElement(code)}catch{}}
@@ -1010,7 +1131,7 @@ function fuehreCodeAus(code,lang,halter){
 /* ── Nachrichten ── */
 function chipsHtml(z){return (z.chips||[]).map(c=>`<span class="chip ${c.status==='läuft'?'laeuft':'fertig'}"><i></i>${esc(c.name)}</span>`).join('')}
 function quellenHtml(z){return (z.quellen||[]).map((q,i)=>`<a href="${esc(q.url)}" target="_blank" rel="noopener"><b>${i+1}</b><span>${esc(q.titel)}</span></a>`).join('')}
-function bilderHtml(z){return (z.bilder||[]).filter(Boolean).map(b=>`<img src="${esc(b)}" alt="Generiertes Bild">`).join('')}
+function bilderHtml(z){return (z.bilder||[]).filter(Boolean).map((b,i)=>`<figure style="margin:8px 0"><img src="${esc(b)}" alt="Generiertes Bild"><a href="${esc(b)}" download="noblemind-bild-${i+1}.${S.bild.format||'png'}">Herunterladen</a></figure>`).join('')}
 
 function seiteGeruest(){return `<div class="chips"></div>
   <button class="denkKnopf" style="display:none" type="button">Gedankengang ▸</button><div class="denk"></div>
@@ -1310,7 +1431,7 @@ function baueTools(cfg,tiefe){
     (sk.fns||[]).forEach(f=>fns.add(f));
   });
   if(w.web)t.push({type:'web_search'});
-  if(w.img)t.push({type:'image_generation',partial_images:2});
+  if(w.img)t.push(bildToolDef());
   if(w.code)t.push({type:'code_interpreter',container:{type:'auto'}});
   if(w.file&&S.cfg.vectorStores.length)t.push({type:'file_search',vector_store_ids:[...S.cfg.vectorStores]});
   S.mcpServer.forEach(m=>{
@@ -1334,6 +1455,13 @@ function baueTools(cfg,tiefe){
       parameters:{type:'object',properties:{ziel:{type:'string',description:'Name des Ziel-Agenten'},auftrag:{type:'string',description:'Der Teilauftrag'}},required:['ziel','auftrag'],additionalProperties:false}});
   }
   return t;
+}
+function bildToolDef(){
+  const bd={type:'image_generation',partial_images:2};
+  if(S.bild.size!=='auto')bd.size=S.bild.size;
+  if(S.bild.quality!=='auto')bd.quality=S.bild.quality;
+  if(S.bild.format!=='png')bd.output_format=S.bild.format;
+  return bd;
 }
 function baueAnweisung(cfg){
   const teile=[];
@@ -2349,6 +2477,8 @@ function paletteEintraege(q){
     ['Agenten-Editor öffnen',()=>oeffneAgenten()],
     ['Workflow-Editor öffnen',()=>oeffneWorkflows()],
     ['Maximum aktivieren',maximumAn],
+    ['Bild-Studio öffnen',()=>bildStudio()],
+    ['Canvas öffnen',()=>canvasOeffne('','html')],
     ['Duell-Modus umschalten',()=>{S.duell.an=!S.duell.an;speichern();toast('Duell-Modus '+(S.duell.an?'aktiv':'aus')+'.','ok')}],
     ['Zen-Modus umschalten',()=>setUiTeil('zen',!S.ui.zen)],
     ['Sitzung als Markdown exportieren',()=>exportMd()],
@@ -2442,6 +2572,8 @@ async function verarbeiteSlash(text){
     toast('Skill „'+sk.name+'“ '+(an?'deaktiviert':'aktiviert')+'.','ok');
     return true}
   if(b==='max'){maximumAn();return true}
+  if(b==='bild'){arg?bildErzeuge(arg):bildStudio();return true}
+  if(b==='canvas'){canvasOeffne(arg||'','html');return true}
   if(b==='duell'){S.duell.an=!S.duell.an;speichern();toast('Duell-Modus '+(S.duell.an?'aktiv':'aus')+'.','ok');return true}
   if(b==='zen'){setUiTeil('zen',!S.ui.zen);return true}
   if(b==='export'){exportMd();return true}
@@ -2457,7 +2589,7 @@ function tastenAuf(){
     ${z('⌘/Strg + ⇧ + N','Neue Sitzung')}${z('⌘/Strg + ⇧ + A','Agenten-Editor')}${z('⌘/Strg + ⇧ + W','Workflow-Editor')}
     ${z('↵ / ⇧ + ↵','Senden / Zeilenumbruch')}${z('?','Diese Übersicht')}
     ${z('Esc','Kaskadiert: Popover → Palette → Modal → Overlay → Stream abbrechen')}</table>
-    <p class="hinweisK" style="margin-top:10px">Slash-Befehle: /neu · /leeren · /modell · /agent · /workflow · /skill · /max · /duell · /zen · /export · /hilfe</p>
+    <p class="hinweisK" style="margin-top:10px">Slash-Befehle: /neu · /leeren · /modell · /agent · /workflow · /skill · /max · /bild · /canvas · /duell · /zen · /export · /hilfe</p>
     <div class="dlgKnoepfe"><button class="kn primaer" onclick="tastenZu()">Schließen</button></div></div>`;
   $('#tastenOv').classList.remove('aus');
 }
@@ -2480,8 +2612,8 @@ function stRender(){
     <div class="modalKoerper">${stKoerperHtml()}</div></div>`;
 }
 function stKoerperHtml(){
-  return {engine:stEngine,werkzeuge:stWerkzeuge,agenten:stAgenten,workflows:stWorkflows,
-    skills:stSkills,darstellung:stDarstellung,daten:stDaten}[R.stBereich]();
+  return ({engine:stEngine,werkzeuge:stWerkzeuge,agenten:stAgenten,workflows:stWorkflows,
+    skills:stSkills,darstellung:stDarstellung,daten:stDaten}[R.stBereich]||stEngine)();
 }
 function zSchalter(l,an,attr,hinweis){
   return `<div class="zeile"><div><div class="zl">${l}</div>${hinweis?`<div class="hinweisK">${hinweis}</div>`:''}</div>
@@ -2565,7 +2697,32 @@ function stWerkzeuge(){
       <button class="kn klein gefahr" aria-label="MCP-Server entfernen" onclick="mcpLoeschen('${esc(m.label)}')">✕</button>
       <label class="sw"><input type="checkbox" ${b.mcps.includes(m.label)?'checked':''} onchange="setMcpGlobal('${esc(m.label)}',this.checked)"><span></span></label></div></div>`).join('')||'<div class="hinweisK">Keine MCP-Server verbunden.</div>'}
     <button class="kn klein" style="margin-top:8px" onclick="mcpDialog(null)">+ MCP-Server</button></div>
+  <div class="feldB"><label>Connectoren</label>
+    <div class="hinweisK" style="margin-bottom:6px">Bekannte Remote-MCP-Dienste – ein Klick legt sie an, danach nur noch Zugangsdaten ergänzen.</div>
+    <div class="kachelReihe">
+    ${CONNECTOREN.map(c=>{const da=S.mcpServer.some(m=>m.label===c.label);
+      return `<span class="kachel ${da?'an':''}" role="button" tabindex="0" onclick="connectorHinzu('${c.label}')" title="${esc(c.url)}">${esc(c.label)}${da?' ✓':''}</span>`;}).join('')}
+    </div></div>
+  <div class="feldB"><label>Bildgenerierung</label><div class="spalten2">
+    <div class="feldB"><label>Größe</label><select class="ein" onchange="S.bild.size=this.value;speichern()">
+      ${[['auto','Automatisch'],['1024x1024','1024 × 1024'],['1536x1024','1536 × 1024 (quer)'],['1024x1536','1024 × 1536 (hoch)']].map(([v,t])=>`<option value="${v}" ${S.bild.size===v?'selected':''}>${t}</option>`).join('')}</select></div>
+    <div class="feldB"><label>Qualität</label><select class="ein" onchange="S.bild.quality=this.value;speichern()">
+      ${[['auto','Automatisch'],['low','niedrig'],['medium','mittel'],['high','hoch']].map(([v,t])=>`<option value="${v}" ${S.bild.quality===v?'selected':''}>${t}</option>`).join('')}</select></div>
+    <div class="feldB"><label>Format</label><select class="ein" onchange="S.bild.format=this.value;speichern()">
+      ${['png','jpeg','webp'].map(v=>`<option value="${v}" ${S.bild.format===v?'selected':''}>${v.toUpperCase()}</option>`).join('')}</select></div>
+    <div class="feldB" style="display:flex;align-items:flex-end"><button class="kn klein" onclick="stZu();bildStudio()">Bild-Studio öffnen</button></div>
+  </div></div>
   <div class="feldB"><button class="kn primaer" onclick="maximumAn();stRender()">⚡ Maximum – alles aktivieren</button></div>`;
+}
+function connectorHinzu(label){
+  const c=CONNECTOREN.find(x=>x.label===label);if(!c)return;
+  if(S.mcpServer.some(m=>m.label===c.label)){toast('Connector „'+c.label+'“ ist bereits angelegt.','hinweis');return}
+  S.mcpServer.push({label:c.label,url:c.url,header:''});
+  S.cfg.mcps=[...new Set([...S.cfg.mcps,c.label])];
+  speichern();stRender();
+  toast(c.auth?('Connector „'+c.label+'“ angelegt – jetzt noch den Authorization-Header ergänzen ('+c.auth+').'):('Connector „'+c.label+'“ angelegt und aktiviert.'),'ok',6000);
+  const m=S.mcpServer.find(x=>x.label===c.label);
+  if(c.auth)mcpDialog(m);
 }
 function stAgenten(){
   return `<h2>Agenten</h2>
@@ -2753,6 +2910,7 @@ function escKaskade(){
   if(!$('#agModal').classList.contains('aus')){agZu();return}
   if(!$('#wfModal').classList.contains('aus')){wfZu();return}
   if(!$('#stModal').classList.contains('aus')){stZu();return}
+  if(document.body.classList.contains('canvas-auf')){canvasZu();return}
   if(R.sv.aktiv){sprachOverlayZu();return}
   if(R.streaming||R.wfLaeuft){stoppe();toast('Abgebrochen.','hinweis',1800);return}
 }
